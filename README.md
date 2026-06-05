@@ -1,49 +1,45 @@
 # Library-of-Babel-offline
 
-
 ---
+Principle:
 
-Princip
+Book address = any arbitrary string from the command line  
+We convert it into a 64‑bit seed (FNV‑1a hash)  
+The seed is used in a simple xorshift PRNG  
+We generate characters from a fixed character set into pages/lines  
 
-- Adresa knihy = libovolný string z příkazové řádky  
-- Z ní uděláme 64bit seed (FNV‑1a hash)  
-- Seed použijeme v jednoduchém xorshift PRNG  
-- Generujeme znaky z pevné znakové sady do stránek/řádků
+Parameters (feel free to adjust later):
 
-Parametry (klidně si pak přepiš):
+PAGES = 10  
+LINESPERPAGE = 40  
+CHARSPERLINE = 80  
 
-- PAGES = 10  
-- LINESPERPAGE = 40  
-- CHARSPERLINE = 80  
+Character set:
 
-Znaková sada:
-
-`c
+`
 "abcdefghijklmnopqrstuvwxyz ,.!?"
 `
 
 ---
 
----
+Compilation and usage
 
-Kompilace a použití
+Compile:
 
-`bash
+`
 gcc babeloffline.c -o babeloffline
 `
 
-Zobrazení knihy do terminálu:
+Display the book in the terminal:
 
-`bash
+`
 ./babel_offline "hex-1-wall-2-shelf-3-book-4"
 `
 
-Uložení do souboru:
+Save to a file:
 
-`bash
-./babeloffline "moje-super-adresa" mojekniha.txt
+`
+./babeloffline "my-super-address" mybook.txt
 `
 
-Stejná adresa → vždy stejná kniha.
-
----
+Same address → always the same book.
